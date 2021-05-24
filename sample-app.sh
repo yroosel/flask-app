@@ -1,4 +1,5 @@
 #!/bin/bash
+# staging exercise with jenkins
 
 mkdir staging
 mkdir staging/templates
