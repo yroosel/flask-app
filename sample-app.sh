@@ -1,22 +1,22 @@
 #!/bin/bash
 
-mkdir tempdir
-mkdir tempdir/templates
-mkdir tempdir/static
+mkdir staging
+mkdir staging/templates
+mkdir staging/static
 
-cp sample_app.py tempdir/.
-cp -r templates/* tempdir/templates/.
-cp -r static/* tempdir/static/.
+cp sample_app.py staging/.
+cp -r templates/* staging/templates/.
+cp -r static/* staging/static/.
 
-echo "FROM python" > tempdir/Dockerfile
-echo "RUN pip install flask" >> tempdir/Dockerfile
-echo "COPY  ./static /home/myapp/static/" >> tempdir/Dockerfile
-echo "COPY  ./templates /home/myapp/templates/" >> tempdir/Dockerfile
-echo "COPY  sample_app.py /home/myapp/" >> tempdir/Dockerfile
-echo "EXPOSE 5059" >> tempdir/Dockerfile
-echo "CMD python /home/myapp/sample_app.py" >> tempdir/Dockerfile
+echo "FROM python" > staging/Dockerfile
+echo "RUN pip install flask" >> staging/Dockerfile
+echo "COPY  ./static /home/myapp/static/" >> staging/Dockerfile
+echo "COPY  ./templates /home/myapp/templates/" >> staging/Dockerfile
+echo "COPY  sample_app.py /home/myapp/" >> staging/Dockerfile
+echo "EXPOSE 5059" >> staging/Dockerfile
+echo "CMD python /home/myapp/sample_app.py" >> staging/Dockerfile
 
-cd tempdir
+cd staging
 docker build -t sampleapp .
-docker run -t -d -p 5099:5059 --name samplerunning sampleapp
+docker run -t -d -p 5099:5059 --name staging_running sampleapp
 docker ps -a 
