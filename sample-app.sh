@@ -19,5 +19,5 @@ echo "CMD python /home/myapp/sample_app.py" >> staging/Dockerfile
 
 cd staging
 docker build -t sampleapp .
-docker run -t -d -p 5099:5059 --name staging_running sampleapp
+docker run -t -d -p 5050:5050 --name staging_running sampleapp
 docker ps -a 
