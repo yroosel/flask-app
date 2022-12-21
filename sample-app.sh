@@ -1,6 +1,6 @@
 #!/bin/bash
 # staging exercise with jenkins
-echo "Creating folders for thes taging of the deployment"
+echo "Creating folders for the staging of the deployment"
 mkdir staging
 mkdir staging/templates
 mkdir staging/static
